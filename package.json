@@ -1,14 +1,14 @@
 {
-  "name": "sit725-2022-t3_practical4",
+  "name": "sit725-2022-t3_practical5",
   "version": "1.0.0",
-  "description": "SIT725 Practical",
+  "description": "SIT725 Practical 5",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/komaldeep152/practical4-trimester3-2022.git"
+    "url": "git+https://github.com/komaldeep152/practical5-2020-sit725-t3.git"
   },
   "keywords": [
     "Express",
@@ -17,11 +17,12 @@
   "author": "Komal",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/komaldeep152/practical4-trimester3-2022/issues"
+    "url": "https://github.com/komaldeep152/practical5-2020-sit725-t3/issues"
   },
-  "homepage": "https://github.com/komaldeep152/practical4-trimester3-2022#readme",
+  "homepage": "https://github.com/komaldeep152/practical5-2020-sit725-t3#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongodb": "^4.13.0"
   }
