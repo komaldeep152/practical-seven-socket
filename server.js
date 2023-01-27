@@ -1,9 +1,12 @@
 var express = require("express")
 var app = express()
 var cors = require('cors')
-let projectCollection;
+//let projectCollection;
 let dbConnect = require("./dbConnect");
 let projectRoutes = require("./routes/projectRoutes");
+
+let http = require('http').createServer(app);
+let io =require('socket.io')(http);
 
 app.use(express.static(__dirname+'/public'))
 app.use(express.json());
@@ -20,6 +23,16 @@ app.get('/addTwoNumbers/:firstNumber/:secondNumber', function(req,res,next){
     }
     else { res.json({result: result, statusCode: 200}).status(200) } 
   })
+
+  io.on('connection', (socket) => {
+   console.log('a user connected');
+   socket.on('disconnect', () => {
+       console.log('user disconnected');
+   });
+   setInterval (() => {
+       socket.emit('number', parseInt(Math.random()*10));
+    }, 1000);
+    });
 //mongodb connection...
 //const MongoClient = require('mongodb').MongoClient;
 //const uri = 'mongodb+srv://komaldeep:komal@cluster0.zgzyjib.mongodb.net/?retryWrites=true&w=majority'
@@ -91,8 +104,8 @@ app.get('/addTwoNumbers/:firstNumber/:secondNumber', function(req,res,next){
     //})
 //})
 
-var port = process.env.port || 3000;
-app.listen(port,()=>{
+var port = process.env.port || 8000;
+http.listen(port,()=>{
     console.log("App listening to http://localhost:"+port)
     //createCollection('Flowers')
 })
